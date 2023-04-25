@@ -1,11 +1,12 @@
 <script>
 import axios from "axios";
 import AppHeader from "./components/AppHeader.vue";
+import ProjectList from "./components/ProjectList.vue";
 
 export default {
   data() {
     return {
-      title: "Hello ",
+      name: "Portfolio Projects",
       projects: [],
     };
   },
@@ -17,6 +18,7 @@ export default {
 
   components: {
     AppHeader,
+    ProjectList,
   },
 
   methods: {
@@ -35,14 +37,10 @@ export default {
 </script>
 
 <template>
-  <AppHeader />
-
-  <h1>{{ title }}</h1>
-  <ul>
-    <li v-for="project in projects">
-      {{ project.name }}
-    </li>
-  </ul>
+  <AppHeader :name="name" />
+  <!-- invio tramite props l'array di progetti
+   -->
+  <ProjectList :projects="projects" name="Project List" />
 </template>
 
 <style lang="scss" scoped></style>
