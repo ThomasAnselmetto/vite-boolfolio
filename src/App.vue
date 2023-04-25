@@ -7,7 +7,22 @@ export default {
   data() {
     return {
       name: "Portfolio Projects",
-      projects: [],
+      projects: {
+        data:[],
+        pagination:{},
+      },
+      
+      // types: {
+      //   data:[],
+      //   pagination:{},
+      // },
+      // technologies: {
+      //   data:[],
+      //   pagination:{},
+      // },
+
+
+
     };
   },
 
@@ -24,7 +39,7 @@ export default {
   methods: {
     fetchProjects() {
       axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
-        this.projects = response.data;
+        this.projects.data = response.data.data;
       });
     },
   },

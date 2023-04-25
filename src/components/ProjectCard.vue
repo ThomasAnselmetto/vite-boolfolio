@@ -10,27 +10,42 @@ export default {
   // components: {
   //   MyComponent,
   // },
+
+  // creo una computed per l'abstract dei caratteri
+
+  computed:{
+    abstract(){
+
+      return this.project.description.slice(0,180) + " . . .";
+    },
+  },
 };
 </script>
 
 <template>
-  .
-  <div class="row justify-content-center align-items-center g-2">
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
+  
+  
+    <div class="col-4">
+      <div class="card">
+        
+        <div class="card-header">
           <h2 class="card-title fw-bold">{{ project.name }}</h2>
+          
+        </div>
+        
+        <div class="card-body">
           <p class="card-text">
-            {{ project.description }}
+            {{ abstract }}
           </p>
         </div>
-        <div class="card-body">
-          <h3>{{}}</h3>
-        </div>
+          <div class="card-footer">
+            <h3>Created At: <br> {{ project.created_at }}</h3>
+          </div>
       </div>
     </div>
-  </div>
-</template>
+  </template>
+
+  
+       
 
 <style lang="scss" scoped></style>
