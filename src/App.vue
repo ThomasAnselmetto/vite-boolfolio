@@ -8,17 +8,17 @@ export default {
     return {
       name: "Portfolio Projects",
       projects: {
-        data:[],
-        pagination:{},
+        list:[],
+        pages:[],
       },
       
       // types: {
       //   data:[],
-      //   pagination:{},
+      //   pages:{},
       // },
       // technologies: {
       //   data:[],
-      //   pagination:{},
+      //   pages:{},
       // },
 
 
@@ -36,10 +36,14 @@ export default {
     ProjectList,
   },
 
+  emits:['changePages'],
+
   methods: {
-    fetchProjects() {
-      axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
-        this.projects.data = response.data.data;
+    fetchProjects(endpoint = null) {
+      if(!endpoint) endpoint = 'http://127.0.0.1:8000/api/projects'
+      axios.get(endpoint).then((response) => {
+        this.projects.list = response.data.data;
+        this.projects.pages = response.data.links;
       });
     },
   },
@@ -55,7 +59,29 @@ export default {
   <AppHeader :name="name" />
   <!-- invio tramite props l'array di progetti
    -->
-  <ProjectList :projects="projects" name="Project List" />
+   <!-- rispettivamente stiamo passando con i props projects, pages, name e ricevendo changePages come emits dal figlio -->
+
+  <ProjectList :projects="projects.list" :pages="projects.pages" name="Project List" @changePages="fetchProjects"/>
 </template>
 
 <style lang="scss" scoped></style>
+
+
+
+<!-- ! appuntino per la pagination -->
+
+<!-- - creo l'array della paginazione
+- tolgo il get e lascio il paginate nel controller api su laravel
+- cambio la parte dell'oggetto dove cerchero' i dati che e (data)
+-creo il button al posto di a e aggiungo bind emit e controllli vari
+type="button" 
+      class="page-link" 
+      :class="{disabled: !page.url,
+      active:page.active
+    }" 
+    @click="$emit('changePages',page.url)"
+      v-html="page.label"
+
+creo emits:['changePages']  e ricevo nel @changePages il parametro dell'url funzione che eseguira poi fetch
+
+-importante la parte dell'endpoint dove inserisco la condizione per gli url -->

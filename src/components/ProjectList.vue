@@ -7,6 +7,7 @@ export default {
   props: {
     projects: Array,
     name: String,
+    pages: Array,
   },
 
   components: {
@@ -26,16 +27,24 @@ export default {
       />
     </div>
     <h2 v-else class="text-muted">There are no projects</h2>
-
+    <!-- non serve lasciare previous e next perche' le ha in se gia' la chiamata axios -->
     <nav aria-label="Page navigation example ">
   <ul class="pagination mt-5">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+   
+
+    <li v-for="page in pages" class="page-item">
+      <button 
+      type="button" 
+      class="page-link" 
+      :class="{disabled: !page.url,
+      active:page.active
+    }" 
+    @click="$emit('changePages',page.url)"
+      v-html="page.label"></button>
+
+    </li>
+   
+    
   </ul>
 </nav>
 
