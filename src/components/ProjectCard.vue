@@ -40,6 +40,17 @@ export default {
         </div>
           <div class="card-footer">
             <h3>Created At: <br> {{ project.created_at }}</h3>
+            <router-link class="btn btn-sm btn-primary ms-auto" 
+            :to="{
+            name:'project-detail',
+            params:{
+              id:project.id,
+              }
+            }
+            ">View Project</router-link>
+
+            <!-- * mi passo i parametri tramite il to="" usando nome : parametro allineati con le rotte in index.js --> 
+            
           </div>
       </div>
     </div>

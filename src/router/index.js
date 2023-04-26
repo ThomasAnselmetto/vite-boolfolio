@@ -5,7 +5,7 @@ import {RouterLink, createRouter,createWebHistory} from 'vue-router';
 
 // todo:import pages
 import HomePage from "../pages/HomePage.vue";
-import SecondComponent from "../pages/SecondComponent.vue";
+import ProjectDetailPage from "../pages/ProjectDetailPage.vue";
 
 
 //todo: creazione routes
@@ -16,7 +16,7 @@ const router = createRouter({
 
   // ? le prossime due righe servono per dare la classe active di bootstrap
   linkActiveClass: 'active' ,
-  LinkexactActiveClasslinkActiveClass: '' ,
+  LinkexactActiveClass: '' ,
 
   // ? routes(plurale quindi collection,array ecc)
   routes:[
@@ -26,9 +26,9 @@ const router = createRouter({
       component:HomePage,
     },
     {
-      path:'/pagprova',
-      name:'pagprova',
-      component:SecondComponent,
+      path:'/projects/:id',
+      name:'project-detail',
+      component:ProjectDetailPage,
     },
   ]
 })

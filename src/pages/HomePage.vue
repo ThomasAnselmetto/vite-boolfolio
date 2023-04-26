@@ -1,7 +1,7 @@
 <!-- ? tutto cio' che e' relativo alle chiamate ai project in axios voglio spostarlo in home page perche' la chiamata dei progetti non e' una cosa che succede in tutto il sito ma su una pagina specifica importiamo anche ProjectList-->
 
 <script>
-import axios from "axios";
+
 import ProjectList from "../components/ProjectList.vue";
 // import MyComponent from "./components/MyComponent.vue";
 

@@ -26,7 +26,7 @@ export default {
     <div class="collapse navbar-collapse ms-auto flex-grow-0" id="navbarNav">
       <ul class="navbar-nav">
         <li> <router-link :to="{name:'home'}" class="nav-link">Home</router-link></li>
-        <li><router-link :to="{name:'pagprova'}" class="nav-link">Prova</router-link></li>
+        
       </ul>
     </div>
   </div>

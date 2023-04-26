@@ -1,4 +1,4 @@
-<!-- ! mi creo il componente in modo tale che gestisca liste e paginazione in modo tale che sia riutilizzabile e che si debbano cambiare solo le specifiche es chiamata axios -->
+<!-- ! mi creo il componente in modo tale che gestisca liste e paginazione in modo tale che sia riutilizzabile e che si debbano cambiare solo le specifiche es chiamata axios mi bastera' includere projectlist in un altro componente-->
 
 <script>
 import axios from "axios";
