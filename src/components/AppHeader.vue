@@ -17,11 +17,28 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">{{ name }}</span>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="#">{{name}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ms-auto flex-grow-0" id="navbarNav">
+      <ul class="navbar-nav">
+        <li> <router-link :to="{name:'home'}" class="nav-link">Home</router-link></li>
+        <li><router-link :to="{name:'pagprova'}" class="nav-link">Prova</router-link></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+        
+
+    
+
+ 
+  
+  
+    
 </template>
 
 <style lang="scss" scoped></style>
