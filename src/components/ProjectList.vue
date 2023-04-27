@@ -60,8 +60,9 @@ export default {
         :isDetail="false"
       />
     </div>
-    <h2 v-else class="text-muted">There are no projects</h2>
+    <h2 v-else class="text-muted">There are no Projects</h2>
     <!-- non serve lasciare previous e next perche' le ha in se gia' la chiamata axios -->
+
     <!-- todo:stampare il componente della paginazione -->
     <AppPagination :pages="projects.pages" @changePages="fetchProjects"/>
   </section>

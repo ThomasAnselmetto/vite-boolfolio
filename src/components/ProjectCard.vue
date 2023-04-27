@@ -29,7 +29,7 @@ export default {
   
   
     <div class="col-4">
-      <div class="card">
+      <div class="card text-bg-info">
         
         <div class="card-header">
           <h2 class="card-title fw-bold">{{ project.name }}</h2>
@@ -49,7 +49,7 @@ export default {
 
             <router-link 
             v-if="!isDetail"
-            class="btn btn-sm btn-primary ms-auto" 
+            class="btn btn-sm btn-success fw-bold ms-auto" 
             :to="{
             name:'project-detail',
             params:{
@@ -68,4 +68,8 @@ export default {
   
        
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card-header{
+  height: 8rem;
+}
+</style>
