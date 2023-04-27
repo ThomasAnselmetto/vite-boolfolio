@@ -51,8 +51,8 @@ export default {
 <template>
   <section>
     <h1 class="my-5">{{ name }}</h1>
-    <div v-if="projects.list.length" class="row g-4">
-
+    <h1 class="my-5 text-light">Project List</h1>
+    <div v-if="projects.list.length" class="row row-cols-3 g-4">
       <ProjectCard
         v-for="project in projects.list"
         :key="project.id"

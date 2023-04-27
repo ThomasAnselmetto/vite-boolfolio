@@ -28,15 +28,32 @@ export default {
 <template>
   
   
-    <div class="col-4">
-      <div class="card text-bg-info">
+    <div class="col">
+      <div class="card text-bg-light border-primary">
         
-        <div class="card-header">
-          <h2 class="card-title fw-bold">{{ project.name }}</h2>
+        <div class="card-header border-primary d-flex justify-content-between align-items-start">
+          <h2 class="card-title fw-bold w-50">{{ project.name }}</h2>
           
+          <div class="type-tech">
+            <span v-if="project.type" 
+            class="badge fs-5" :style="{backgroundColor: project.type.color}" >{{project.type.label}}
+            </span>
+            <hr v-if="project.type">
+            <h6 class="fw-bold">Used technologies</h6>
+            <div v-if="project.technologies.length" class="technologies d-flex flex-column align-items-end">
+              <span v-for="technology in project.technologies" 
+              :key="technology.id" 
+              class="badge rounded-pill my-1 fs-7"
+              :style="{backgroundColor: technology.color}"
+              >{{ technology.label }}</span>
+            </div>
+          </div>
         </div>
+
+
         
-        <div class="card-body">
+        <div class="card-body text-primary fw-bold ">
+     
           <p class="card-text">
 
             <!-- se siamo sul dettaglio prendi la description come ti arriva dalla chiamata axios altrimenti stampa abstract(che la riduce) -->
@@ -44,7 +61,7 @@ export default {
             {{ isDetail ? project.description : abstract }}
           </p>
         </div>
-          <div class="card-footer">
+          <div class="card-footer border-primary">
             <h3>Created At: <br> {{ project.created_at }}</h3>
 
             <router-link 
@@ -70,6 +87,9 @@ export default {
 
 <style lang="scss" scoped>
 .card-header{
-  height: 8rem;
+  height: 12rem;
+}
+.card-body{
+  min-height: 10rem;
 }
 </style>

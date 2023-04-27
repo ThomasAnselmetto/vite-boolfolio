@@ -15,7 +15,14 @@ export default {
     axios.get(`http://127.0.0.1:8000/api/projects/${this.$route.params.slug}`)
     .then((response)=>{
       this.project = response.data;
+    })
+    .catch((err)=>{
+
+    })
+    .finally(()=>{
+      
     });
+
 
   },
 
@@ -28,8 +35,11 @@ export default {
 <!-- ? se c'e' il progetto stampa la projectcard il punto (?) per il title funziona come per php-->
 
 <template>
-  <h1 class="my-4">Project Detail {{ project?.name }}</h1>
-  <ProjectCard v-if="project" :project="project" :isDetail="true"/>
+  <h1 class="my-5 text-light">Project Detail: <strong class="text-secondary">{{ project?.name }}</strong></h1>
+  <div class="row row-cols-1">
+    <ProjectCard v-if="project" :project="project" :isDetail="true"/>
+  </div>
 </template>
+
 
 <style lang="scss" scoped></style>
