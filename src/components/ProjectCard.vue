@@ -5,6 +5,8 @@ export default {
   name: "ProjectCard",
   props: {
     project: Object,
+    // creo una props che risponde vero o falso se sono sul detail o meno
+    isDetail: Boolean,
   },
 
   // components: {
@@ -15,6 +17,7 @@ export default {
 
   computed:{
     abstract(){
+      // abbreviazione dei caratteri delle cards
 
       return this.project.description.slice(0,180) + " . . .";
     },
@@ -35,16 +38,22 @@ export default {
         
         <div class="card-body">
           <p class="card-text">
-            {{ abstract }}
+
+            <!-- se siamo sul dettaglio prendi la description come ti arriva dalla chiamata axios altrimenti stampa abstract(che la riduce) -->
+
+            {{ isDetail ? project.description : abstract }}
           </p>
         </div>
           <div class="card-footer">
             <h3>Created At: <br> {{ project.created_at }}</h3>
-            <router-link class="btn btn-sm btn-primary ms-auto" 
+
+            <router-link 
+            v-if="!isDetail"
+            class="btn btn-sm btn-primary ms-auto" 
             :to="{
             name:'project-detail',
             params:{
-              id:project.id,
+              slug:project.slug,
               }
             }
             ">View Project</router-link>

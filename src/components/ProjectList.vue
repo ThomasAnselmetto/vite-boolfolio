@@ -57,6 +57,7 @@ export default {
         v-for="project in projects.list"
         :key="project.id"
         :project="project"
+        :isDetail="false"
       />
     </div>
     <h2 v-else class="text-muted">There are no projects</h2>
