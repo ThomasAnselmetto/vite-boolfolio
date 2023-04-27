@@ -10,6 +10,8 @@ import AppPagination from "./AppPagination.vue";
 export default {
   data() {
     return {
+      error:false,
+      isLoading:false,
       title: "Hello world",
       projects: {
         list:[],
@@ -25,18 +27,29 @@ export default {
   },
 
   components: {
-    ProjectCard,AppPagination
+    ProjectCard,AppPagination,
   },
 
   emits:['changePages'],
 
   methods: {
     fetchProjects(endpoint = null) {
+      // ogni volta che c'e' un fetch mettiamo il loading true
+      this.isLoading = true;
       if(!endpoint) endpoint = 'http://127.0.0.1:8000/api/projects'
+
       axios.get(endpoint).then((response) => {
         this.projects.list = response.data.data;
         this.projects.pages = response.data.links;
-      });
+      })
+      .catch((err)=>{
+        this.error = err.message;
+      })
+      // ogni volta che il fetch finisce a prescindere dal risultato il loading finisce
+
+      .finally(()=>{
+        this.isLoading = false;
+    });;
     },
   },
   // ricordarci del this per accedere ai metodi e a data
@@ -51,8 +64,12 @@ export default {
 <template>
   <section>
     <h1 class="my-5">{{ name }}</h1>
+    <AppLoader v-if="isLoading"/>
     <h1 class="my-5 text-light">Project List</h1>
-    <div v-if="projects.list.length" class="row row-cols-3 g-4">
+    <div v-if="error" class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+    <div v-else-if="projects.list.length" class="row row-cols-3 g-4">
       <ProjectCard
         v-for="project in projects.list"
         :key="project.id"

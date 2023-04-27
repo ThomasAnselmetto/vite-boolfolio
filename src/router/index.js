@@ -31,7 +31,7 @@ const router = createRouter({
       component:ProjectDetailPage,
     },
     {
-      path:'/404',
+      path:'/pathMatch(.*)*',
       name:'not-found',
       component:NotFoundPage,
     },

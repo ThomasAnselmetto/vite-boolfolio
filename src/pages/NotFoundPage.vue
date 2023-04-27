@@ -3,16 +3,19 @@
 
 export default {
  name:'NotFoundPage',
-  // components: {
-  //   MyComponent,
-  // },
+ 
 };
 </script>
 
 <template>
-  <div class="d-flex align-items-center justify-content-center h-100">
-    <strong>404|Page Not Found</strong>
+  <div class="d-flex align-items-center justify-content-center full-height">
+    <strong class="fs-2">404 | Page Not Found</strong>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.full-height{
+  min-height: calc(100vh - 57.98px);
+}
+
+</style>
